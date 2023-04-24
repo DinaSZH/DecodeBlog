@@ -1,0 +1,27 @@
+<header>
+  <div class="header-title">
+    <a href="/">Decode Blog</a>
+  </div>
+  <div class="header-search">
+    <input type="text" placeholder="Поиск по блогам" />
+    <button>
+      <img src="images/search.png" alt="" />
+      Найти
+    </button>
+  </div>
+
+  <div class="header-button">
+    <% if(user._id && user.full_name.length >0) { %>
+    <a href="/profile/<%=user._id %>"
+      ><img src="/images/avatar.png" alt="" style="width: 50px"
+    /></a>
+    <% } else { %>
+    <button>
+      <a href="/signup">Регистрация</a>
+    </button>
+    <button>
+      <a href="/login">Вход</a>
+    </button>
+    <% } %>
+  </div>
+</header>

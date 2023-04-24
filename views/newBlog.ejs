@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Decode Blog</title>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %>
+
+    <div class="container">
+      <div class="main mainBlog">
+        <div class="main-title">
+          <h1 class="title">Новый блог</h1>
+          <input
+            type="text"
+            placeholder="Введите заголовок блога"
+            name="title"
+          />
+
+          <select name="category" id="categories">
+            <option value="">Выберите категорию</option>
+            <% categories.forEach(category => { %>
+            <option value=""><%=category.name %></option>
+            <% }) %>
+          </select>
+
+          <input type="file" id="upload" name="postImg" hidden />
+          <label for="upload">Выберите картинку</label>
+
+          <input
+            type="text"
+            placeholder="Введите описание блога"
+            id="description"
+            name="description"
+          />
+          <br />
+          <button>Создать</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

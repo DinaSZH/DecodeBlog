@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Decode Blog</title>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %>
+
+    <div class="login-container">
+      <div class="login">
+        <form action="/api/signin" method="POST" class="form">
+          <div class="title">Вход</div>
+          <input type="email" placeholder="Введите email" name="email" />
+          <input type="password" placeholder="Введите пароль" name="password" />
+          <button type="submit">Войти</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

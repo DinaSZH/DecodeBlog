@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Decode Blog</title>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %>
+
+    <div class="container">
+      <div class="main">
+        <div class="main-title">
+          <h1 class="title">Блоги по программированию</h1>
+          <p>
+            Популярные и лучшие публикации по программированию для начинающих и
+            профессиональных программистов и IT-специалистов.
+          </p>
+        </div>
+        <div class="post">
+          <img src="images/post1.png" alt="" />
+          <div class="post-title">
+            <h2>Обзор Report Manager от Webix</h2>
+          </div>
+          <div class="post-text">
+            <p>
+              Осень 2020 года стала плодотворным временем для специалистов
+              Webix.
+              <br />
+              <br />
+              Команда Webix выпустила восьмую версию библиотеки
+              пользовательского интерфейса Webix с двумя новыми комплексными
+              виджетами. Первый - зто Scheduler, о котором мы подробно говорили
+              ранее. Второй виджет - это Gantt chart в JavaScript. Подробную
+              информацию об этом виджете Вы можете найти в статье. <br />
+              <br />
+              Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым
+              комплексным виджетом Report Manager. Давайте рассмотрим ег
+            </p>
+          </div>
+
+          <div class="post-review">
+            <div class="data">
+              <i class="fa-regular fa-calendar"></i>
+              <p>26.06.2020</p>
+            </div>
+
+            <div class="views">
+              <i class="fa-solid fa-eye"></i>
+              <p>21</p>
+            </div>
+
+            <div class="comments">
+              <i class="fa-solid fa-message"></i>
+              <p>4</p>
+            </div>
+
+            <div class="category">
+              <i class="fa-solid fa-list"></i>
+              <p>Веб-разработка</p>
+            </div>
+
+            <div class="author">
+              <i class="fa-solid fa-user"></i>
+              <p>Name</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="post">
+          <img src="images/post2.png" alt="" />
+          <div class="post-title">
+            <h2>
+              Разработчики изобрели методологию высокоскоростного
+              программирования
+            </h2>
+          </div>
+          <div class="post-text">
+            <p>
+              Осень 2020 года стала плодотворным временем для специалистов
+              Webix.
+              <br />
+              <br />
+              Команда Webix выпустила восьмую версию библиотеки
+              пользовательского интерфейса Webix с двумя новыми комплексными
+              виджетами. Первый - зто Scheduler, о котором мы подробно говорили
+              ранее. Второй виджет - это Gantt chart в JavaScript. Подробную
+              информацию об этом виджете Вы можете найти в статье. <br />
+              <br />
+              Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым
+              комплексным виджетом Report Manager. Давайте рассмотрим ег
+            </p>
+          </div>
+
+          <div class="post-review">
+            <div class="data">
+              <i class="fa-regular fa-calendar"></i>
+              <p>26.06.2020</p>
+            </div>
+
+            <div class="views">
+              <i class="fa-solid fa-eye"></i>
+              <p>21</p>
+            </div>
+
+            <div class="comments">
+              <i class="fa-solid fa-message"></i>
+              <p>4</p>
+            </div>
+
+            <div class="category">
+              <i class="fa-solid fa-list"></i>
+              <p>Веб-разработка</p>
+            </div>
+
+            <div class="author">
+              <i class="fa-solid fa-user"></i>
+              <p>Name</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav>
+        <div class="nav-title">
+          <h1>Категории</h1>
+        </div>
+
+        <div class="navigation">
+          <ul>
+            <%categories.forEach(category =>{ %>
+            <li>
+              <a href="/<%=category.key %>"> <%=category.name%> </a>
+            </li>
+            <hr />
+            <% }) %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

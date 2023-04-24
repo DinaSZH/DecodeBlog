@@ -1,0 +1,83 @@
+.myBlog-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main a {
+  padding: 10px 20px;
+  border: none;
+  background: #00a2dc;
+  border-radius: 4px;
+  color: #fff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.post-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.post-edit i {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+nav img {
+  margin-bottom: 11px;
+}
+
+nav .name {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 46px;
+  color: #000000;
+  text-align: center;
+}
+
+nav p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav .edit-button a {
+  padding: 10px 20px;
+  border: none;
+  background: #00a2dc;
+  border-radius: 4px;
+  color: #fff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}

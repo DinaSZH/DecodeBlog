@@ -1,0 +1,62 @@
+.commentNumber {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.commentItem {
+  margin: 30px 0;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user img {
+  width: 72px;
+  height: 72px;
+  margin-right: 30px;
+  margin-bottom: 0;
+}
+
+.user .name {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.main input {
+  padding: 10px 20px;
+  width: 95%;
+  background: #ffffff;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px 0px 0px 4px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 46px;
+  /* or 288% */
+
+  color: rgba(0, 0, 0, 0.54);
+  margin-bottom: 30px;
+}
+
+.comment-section button {
+  padding: 10px 20px;
+  border: none;
+  background: #00a2dc;
+  border-radius: 4px;
+  color: #fff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+}

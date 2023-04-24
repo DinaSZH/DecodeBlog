@@ -1,0 +1,103 @@
+.main {
+  padding: 35px 50px;
+  background-color: #fff;
+  min-height: 75vh;
+  width: 79%;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 46px;
+  color: #000000;
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.main-title p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+
+  text-align: center;
+
+  color: #000000;
+}
+
+.post p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+
+.post {
+  margin: 40px 0px;
+}
+
+.post img {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.post-title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 24px;
+  text-align: left;
+  margin-bottom: 30px;
+  color: #000000;
+}
+
+.post-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 55px;
+}
+
+.post-review {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.data {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.views {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comments {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
