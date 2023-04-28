@@ -10,31 +10,34 @@
     <div class="container">
       <div class="main mainBlog">
         <div class="main-title">
-          <h1 class="title">Новый блог</h1>
-          <input
-            type="text"
-            placeholder="Введите заголовок блога"
-            name="title"
-          />
+          <form action="/api/new" method="POST" enctype="multipart/form-data">
+            <h1 class="title">Новый блог</h1>
 
-          <select name="category" id="categories">
-            <option value="">Выберите категорию</option>
-            <% categories.forEach(category => { %>
-            <option value=""><%=category.name %></option>
-            <% }) %>
-          </select>
+            <input
+              type="text"
+              placeholder="Введите заголовок блога"
+              name="title"
+            />
 
-          <input type="file" id="upload" name="postImg" hidden />
-          <label for="upload">Выберите картинку</label>
+            <select name="category" id="categories">
+              <option value="">Выберите категорию</option>
+              <% categories.forEach(category => { %>
+              <option value="<%=category._id %>"><%=category.name %></option>
+              <% }) %>
+            </select>
 
-          <input
-            type="text"
-            placeholder="Введите описание блога"
-            id="description"
-            name="description"
-          />
-          <br />
-          <button>Создать</button>
+            <input type="file" id="upload" name="image" hidden />
+            <label for="upload">Выберите картинку</label>
+
+            <input
+              type="text"
+              placeholder="Введите описание блога"
+              id="description"
+              name="description"
+            />
+            <br />
+            <button>Создать</button>
+          </form>
         </div>
       </div>
     </div>

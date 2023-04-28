@@ -2,12 +2,15 @@ const express = require("express");
 const router = express.Router();
 const Categories = require("../Categories/Categories");
 const User = require("../auth/User");
+const Post = require("../Posts/Post");
 
 router.get("/", async (req, res) => {
   const allCategories = await Categories.find();
+  const posts = await Post.find().populate("category").populate("author");
   res.render("index", {
     categories: allCategories,
     user: req.user ? req.user : {},
+    posts,
   });
 });
 
