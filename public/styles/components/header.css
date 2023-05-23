@@ -31,11 +31,11 @@ header {
 
 .header-search input {
   padding: 10px 20px;
-  background-color: transparent;
+  /* background-color: transparent; */
   outline: none;
   border: none;
   width: 90%;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .header-search button {

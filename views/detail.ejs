@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head.ejs') %>
+    <title>Decode Blog</title>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %>
+
+    <div class="container">
+      <div class="main">
+        <div class="main-title">
+          <h1 class="title">Блоги по программированию</h1>
+          <p>
+            Популярные и лучшие публикации по программированию для начинающих и
+            профессиональных программистов и IT-специалистов.
+          </p>
+        </div>
+
+        <div class="post">
+          <img src="<%=post.image %>" alt="" />
+          <div class="post-review">
+            <div class="data">
+              <i class="fa-regular fa-calendar"></i>
+              <p>24.05.2023</p>
+            </div>
+
+            <div class="views">
+              <i class="fa-solid fa-eye"></i>
+              <p>21</p>
+            </div>
+
+            <div class="comments">
+              <i class="fa-solid fa-message"></i>
+              <p>4</p>
+            </div>
+
+            <div class="category">
+              <i class="fa-solid fa-list"></i>
+              <p><%=post.category.name%></p>
+            </div>
+
+            <div class="author">
+              <i class="fa-solid fa-user"></i>
+              <p><%=post.author.full_name%></p>
+            </div>
+          </div>
+          <div class="post-title">
+            <h2><%=post.title %></h2>
+            <div class="post-edit">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+              <p>Еще</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="post-text">
+          <p><%=post.description %></p>
+        </div>
+
+        <div class="comment-section">
+          <div class="commentNumber">
+            <h1>2 комментария</h1>
+          </div>
+
+          <div class="commentItem">
+            <div class="user">
+              <img src="images/avatar.png" alt="" />
+              <div class="name">Ельнур Сеитжанов</div>
+            </div>
+            <div class="commentText">
+              <p>
+                В отличие от обычных виджетов пользовательского интерфейса
+                JavaScript, комплексные виджеты - это полноценные приложения,
+                которые не требуют дополнительной настройки и кастомизации.
+              </p>
+            </div>
+          </div>
+          <hr />
+          <div class="commentItem">
+            <div class="user">
+              <img src="images/avatar.png" alt="" />
+              <div class="name">Ельнур Сеитжанов</div>
+            </div>
+            <div class="commentText">
+              <p>
+                В отличие от обычных виджетов пользовательского интерфейса
+                JavaScript, комплексные виджеты - это полноценные приложения,
+                которые не требуют дополнительной настройки и кастомизации.
+              </p>
+            </div>
+          </div>
+
+          <input type="text" placeholder="Введите текст комментария" />
+          <button>Отправить</button>
+        </div>
+      </div>
+      <nav>
+        <div class="nav-title">
+          <h1>Категории</h1>
+        </div>
+
+        <div class="navigation">
+          <ul>
+            <%categories.forEach(category =>{ %>
+            <li>
+              <a href="/<%=category.key %>"> <%=category.name%> </a>
+            </li>
+            <hr />
+            <% }) %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <%- include('partials/scripts.ejs') %>
+  </body>
+</html>

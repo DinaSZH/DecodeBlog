@@ -20,18 +20,20 @@
         <% posts.forEach(item => { %>
 
         <div class="post">
-          <img src="<%=item.image %>" alt="" />
-          <div class="post-title">
-            <h2><%=item.title %></h2>
-          </div>
-          <div class="post-text">
-            <p><%=item.description %></p>
-          </div>
+          <a href="/detail/<%=item._id %>" class="detail-item">
+            <img src="<%=item.image %>" alt="" />
+            <div class="post-title">
+              <h2><%=item.title %></h2>
+            </div>
+            <div class="post-text">
+              <p><%=item.description %></p>
+            </div>
+          </a>
 
           <div class="post-review">
             <div class="data">
               <i class="fa-regular fa-calendar"></i>
-              <p>26.06.2020</p>
+              <p>24.05.2023</p>
             </div>
 
             <div class="views">
@@ -57,6 +59,24 @@
         </div>
 
         <% }) %>
+
+        <div class="pages">
+          <% 
+            let localsString = ''
+            if(locals.category){
+              localsString = `category=${locals.category}&`
+            }
+            if(locals.search){
+              localsString = `search=${locals.search}&`
+            }
+            for(let i=0; i<pages; i++){
+              %>
+              <a href="?<%=localsString%>page=<%=i%>"><%=i + 1%></a>
+              <%
+            }
+            %>
+        </div>
+        
       </div>
 
       <nav>
@@ -68,7 +88,7 @@
           <ul>
             <%categories.forEach(category =>{ %>
             <li>
-              <a href="/<%=category.key %>"> <%=category.name%> </a>
+              <a href="?category=<%=category.key %>"> <%=category.name%> </a>
             </li>
             <hr />
             <% }) %>
@@ -76,5 +96,7 @@
         </div>
       </nav>
     </div>
+
+    <%- include('partials/scripts.ejs') %>
   </body>
 </html>

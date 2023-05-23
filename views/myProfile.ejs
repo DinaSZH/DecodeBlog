@@ -13,36 +13,40 @@
           <h1 class="title">Moи блоги</h1>
           <a href="/newBlog">Новый блог</a>
         </div>
+
+        <% posts.forEach(item => { %>
+
         <div class="post">
-          <img src="/images/post1.png" alt="" />
+          <img src="<%=item.image %>" alt="" />
           <div class="post-title">
-            <h2>Обзор Report Manager от Webix</h2>
-            <div class="post-edit">
-              <i class="fa-solid fa-ellipsis-vertical"></i>
-              <p>Еще</p>
+            <h2><%=item.title %></h2>
+            <div class="dropdownSettings">
+              <div class="settings">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+                <p>Еще</p>
+              </div>
+              <div class="settingsOption">
+                <button>
+                  <a href="/edit/<%=item._id %>">Edit</a>
+                </button>
+                <button>
+                  <a
+                    href="#"
+                    onclick="deletePost('<%=item._id%>', '<%=item.author._id%>')"
+                    >Delete</a
+                  >
+                </button>
+              </div>
             </div>
           </div>
           <div class="post-text">
-            <p>
-              Осень 2020 года стала плодотворным временем для специалистов
-              Webix.
-              <br />
-              <br />
-              Команда Webix выпустила восьмую версию библиотеки
-              пользовательского интерфейса Webix с двумя новыми комплексными
-              виджетами. Первый - зто Scheduler, о котором мы подробно говорили
-              ранее. Второй виджет - это Gantt chart в JavaScript. Подробную
-              информацию об этом виджете Вы можете найти в статье. <br />
-              <br />
-              Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым
-              комплексным виджетом Report Manager. Давайте рассмотрим ег
-            </p>
+            <p><%=item.description %></p>
           </div>
 
           <div class="post-review">
             <div class="data">
               <i class="fa-regular fa-calendar"></i>
-              <p>26.06.2020</p>
+              <p>24.05.2023</p>
             </div>
 
             <div class="views">
@@ -57,72 +61,25 @@
 
             <div class="category">
               <i class="fa-solid fa-list"></i>
-              <p>Веб-разработка</p>
+              <p><%=item.category.name %></p>
             </div>
 
             <div class="author">
               <i class="fa-solid fa-user"></i>
-              <p>Name</p>
+              <p><%=item.author.full_name %></p>
             </div>
           </div>
         </div>
 
-        <div class="post">
-          <img src="/images/post2.png" alt="" />
-          <div class="post-title">
-            <h2>
-              Разработчики изобрели методологию высокоскоростного
-              программирования
-            </h2>
-          </div>
-          <div class="post-text">
-            <p>
-              Осень 2020 года стала плодотворным временем для специалистов
-              Webix.
-              <br />
-              <br />
-              Команда Webix выпустила восьмую версию библиотеки
-              пользовательского интерфейса Webix с двумя новыми комплексными
-              виджетами. Первый - зто Scheduler, о котором мы подробно говорили
-              ранее. Второй виджет - это Gantt chart в JavaScript. Подробную
-              информацию об этом виджете Вы можете найти в статье. <br />
-              <br />
-              Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым
-              комплексным виджетом Report Manager. Давайте рассмотрим ег
-            </p>
-          </div>
-
-          <div class="post-review">
-            <div class="data">
-              <i class="fa-regular fa-calendar"></i>
-              <p>26.06.2020</p>
-            </div>
-
-            <div class="views">
-              <i class="fa-solid fa-eye"></i>
-              <p>21</p>
-            </div>
-
-            <div class="comments">
-              <i class="fa-solid fa-message"></i>
-              <p>4</p>
-            </div>
-
-            <div class="category">
-              <i class="fa-solid fa-list"></i>
-              <p>Веб-разработка</p>
-            </div>
-
-            <div class="author">
-              <i class="fa-solid fa-user"></i>
-              <p>Name</p>
-            </div>
-          </div>
-        </div>
+        <% }) %>
       </div>
 
       <nav>
-        <img src="/images/avatar.png" alt="" />
+        <img
+          src="/images/user.png"
+          alt=""
+          style="width: 200px; text-align: center"
+        />
         <h1 class="name"><%=user.full_name %></h1>
         <p>
           В основном пишу про веб - разработку, на React & Redux <br />
@@ -136,5 +93,7 @@
         <% } %>
       </nav>
     </div>
+
+    <%- include('partials/scripts.ejs') %>
   </body>
 </html>

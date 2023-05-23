@@ -2,13 +2,13 @@
   <div class="header-title">
     <a href="/">Decode Blog</a>
   </div>
-  <div class="header-search">
-    <input type="text" placeholder="Поиск по блогам" />
+  <form class="header-search">
+    <input type="text" name="search" placeholder="Поиск по блогам" />
     <button>
       <img src="images/search.png" alt="" />
       Найти
     </button>
-  </div>
+  </form>
 
   <div class="header-button">
     <% if(user._id && user.full_name.length >0) { %>
