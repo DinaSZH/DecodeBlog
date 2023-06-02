@@ -3,6 +3,7 @@ const router = express.Router();
 const Categories = require("../Categories/Categories");
 const User = require("../auth/User");
 const Post = require("../Posts/Post");
+const Comment = require("../Comment/Comments");
 
 router.get("/", async (req, res) => {
   const options = {};
@@ -56,6 +57,10 @@ router.get("/profile/:id", async (req, res) => {
 });
 
 router.get("/detail/:id", async (req, res) => {
+  const comments = await Comment.find({ postId: req.params.id }).populate(
+    "authorId"
+  );
+  console.log(comments);
   const post = await Post.findById(req.params.id)
     .populate("category")
     .populate("author");
@@ -65,6 +70,7 @@ router.get("/detail/:id", async (req, res) => {
     categories: allCategories,
     post: post,
     user: req.user ? req.user : {},
+    comments: comments,
   });
 });
 

@@ -59,4 +59,25 @@
   font-size: 16px;
   line-height: 20px;
   cursor: pointer;
+  margin-top: 10px;
+}
+
+.comment-section textarea {
+  width: 100%;
+  resize: none;
+  height: 100px;
+  margin-top: 10px;
+}
+.comment-section a {
+  background-color: #fff3cd;
+  color: #00a2dc;
+}
+
+.comm {
+  background-color: #fff3cd;
+  padding: 50px 0px;
+}
+
+.comm p {
+  color: #856404;
 }

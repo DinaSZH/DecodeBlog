@@ -60,39 +60,57 @@
 
         <div class="comment-section">
           <div class="commentNumber">
-            <h1>2 комментария</h1>
+            <h1>Комментарии</h1>
           </div>
 
           <div class="commentItem">
             <div class="user">
-              <img src="images/avatar.png" alt="" />
+              <img src="/images/user.png" alt="" />
               <div class="name">Ельнур Сеитжанов</div>
             </div>
-            <div class="commentText">
+            <!-- <div class="commentText">
               <p>
                 В отличие от обычных виджетов пользовательского интерфейса
                 JavaScript, комплексные виджеты - это полноценные приложения,
                 которые не требуют дополнительной настройки и кастомизации.
               </p>
-            </div>
+            </div> -->
           </div>
-          <hr />
+
+          <% if(user._id) {%>
+          <form onsubmit="sendComment(event)">
+            <p>Напишите комментарий</p>
+            <textarea id="comment-text"></textarea>
+            <input type="hidden" value="<%=user._id %>" id="comment_author" />
+            <input type="hidden" value="<%=post._id %>" id="comment_post" />
+            <button type="submit">Сохранить</button>
+          </form>
+          <% } else{ %>
+          <div class="comm">
+            <p>
+              <a href="/login">Войдите</a>
+              или
+              <a href="/signup">зарегестрируйтесь</a>, чтобы оставить
+              комментарий
+            </p>
+          </div>
+          <% } %> <% if(comments) { comments.forEach(comment =>{ %>
+
           <div class="commentItem">
             <div class="user">
-              <img src="images/avatar.png" alt="" />
-              <div class="name">Ельнур Сеитжанов</div>
+              <img src="/images/user.png" alt="" />
+              <div class="name">
+                <a href=""><%=comment.authorId.full_name %></a>
+              </div>
             </div>
             <div class="commentText">
-              <p>
-                В отличие от обычных виджетов пользовательского интерфейса
-                JavaScript, комплексные виджеты - это полноценные приложения,
-                которые не требуют дополнительной настройки и кастомизации.
-              </p>
+              <% if(comment.text.length > 0) { %>
+              <p>Комментарий: <%=comment.text %></p>
+              <% } %>
             </div>
           </div>
 
-          <input type="text" placeholder="Введите текст комментария" />
-          <button>Отправить</button>
+          <% }) } %>
         </div>
       </div>
       <nav>

@@ -10,6 +10,7 @@ require("./server/config/passport");
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(
   session({
     name: "blog.session",
@@ -29,6 +30,7 @@ app.use(require("./server/pages/router"));
 app.use(require("./server/Categories/router"));
 app.use(require("./server/auth/router"));
 app.use(require("./server/Posts/router"));
+app.use(require("./server/Comment/router"));
 
 const PORT = 8000;
 
