@@ -32,7 +32,7 @@
 
             <div class="comments">
               <i class="fa-solid fa-message"></i>
-              <p>4</p>
+              <p><%=comments.length %></p>
             </div>
 
             <div class="category">
@@ -61,20 +61,6 @@
         <div class="comment-section">
           <div class="commentNumber">
             <h1>Комментарии</h1>
-          </div>
-
-          <div class="commentItem">
-            <div class="user">
-              <img src="/images/user.png" alt="" />
-              <div class="name">Ельнур Сеитжанов</div>
-            </div>
-            <!-- <div class="commentText">
-              <p>
-                В отличие от обычных виджетов пользовательского интерфейса
-                JavaScript, комплексные виджеты - это полноценные приложения,
-                которые не требуют дополнительной настройки и кастомизации.
-              </p>
-            </div> -->
           </div>
 
           <% if(user._id) {%>

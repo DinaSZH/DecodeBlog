@@ -3,6 +3,7 @@ const User = require("../auth/User");
 //const User = require("../auth/User");
 const bcrypt = require("bcrypt");
 const LocalStrategy = require("passport-local");
+const GitHubStrategy = require("passport-github2").Strategy;
 
 passport.use(
   new LocalStrategy(
@@ -24,6 +25,30 @@ passport.use(
         .catch((e) => {
           return done(e);
         });
+    }
+  )
+);
+
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: "b1dec5a2f8ac95710d40",
+      clientSecret: "ca068784b2112350fa769ecf62b7ba62b4ce4a31",
+      callbackURL: "http://localhost:8000/api/auth/github",
+      scope: ["openid", "email", "profile"],
+    },
+    async function (accessToken, refreshToken, profile, done) {
+      const newUser = await new User({
+        githubId: profile.id,
+        full_name: profile.username,
+        // email: profile.emails[0].value,
+      }).save();
+      console.log(newUser);
+
+      return done(null, newUser);
+      // User.findOrCreate({ githubId: profile.id }, function (err, user) {
+      //   return done(err, user);
+      // });
     }
   )
 );

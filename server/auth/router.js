@@ -10,5 +10,8 @@ router.post(
   signIn
 );
 router.get("/api/signout", signOut);
+router.get("/api/auth/github", passport.authenticate("github"), (req, res) => {
+  res.redirect("/profile/" + req.user._id);
+});
 
 module.exports = router;
