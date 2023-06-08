@@ -10,15 +10,24 @@
     <div class="container">
       <div class="main">
         <div class="main-title myBlog-title">
+          <% if (locals.isOwnProfile) { %>
           <h1 class="title">Moи блоги</h1>
+          <% } %> <% if (locals.isOwnProfile) { %>
           <a href="/newBlog">Новый блог</a>
+          <% } %>
         </div>
 
-        <% posts.forEach(item => { %>
+        <% posts.forEach(item => { if(item.author.full_name === user.full_name){
+        %>
+
         <div class="post">
-          <img src="<%=item.image %>" alt="" />
+          <a href="/detail/<%=item._id %>" class="detail-item">
+            <img src="<%=item.image %>" alt="" />
+          </a>
           <div class="post-title">
             <h2><%=item.title %></h2>
+
+            <% if (locals.isOwnProfile) { %>
             <div class="dropdownSettings">
               <div class="settings">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -37,11 +46,13 @@
                 </button>
               </div>
             </div>
+            <% }%>
           </div>
-          <div class="post-text">
-            <p><%=item.description %></p>
-          </div>
-
+          <a href="/detail/<%=item._id %>" class="detail-item">
+            <div class="post-text">
+              <p><%=item.description %></p>
+            </div>
+          </a>
           <div class="post-review">
             <div class="data">
               <i class="fa-regular fa-calendar"></i>
@@ -70,7 +81,7 @@
           </div>
         </div>
 
-        <% }) %>
+        <%} }) %>
       </div>
 
       <nav>

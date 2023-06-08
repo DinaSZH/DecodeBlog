@@ -47,10 +47,27 @@
           </div>
           <div class="post-title">
             <h2><%=post.title %></h2>
-            <div class="post-edit">
-              <i class="fa-solid fa-ellipsis-vertical"></i>
-              <p>Еще</p>
+
+            <% if (locals.isOwnProfile) { %>
+            <div class="dropdownSettings">
+              <div class="settings">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+                <p>Еще</p>
+              </div>
+              <div class="settingsOption">
+                <button>
+                  <a href="/edit/<%=post._id %>">Edit</a>
+                </button>
+                <button>
+                  <a
+                    href="#"
+                    onclick="deletePost('<%=post._id%>', '<%=post.author._id%>')"
+                    >Delete</a
+                  >
+                </button>
+              </div>
             </div>
+            <% } %>
           </div>
         </div>
 

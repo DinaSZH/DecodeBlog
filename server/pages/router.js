@@ -6,6 +6,8 @@ const Post = require("../Posts/Post");
 const Comment = require("../Comment/Comments");
 
 router.get("/", async (req, res) => {
+  const userId = req.params.id;
+
   const options = {};
   const categories = await Categories.findOne({ key: req.query.category });
   if (categories) {
@@ -27,6 +29,7 @@ router.get("/", async (req, res) => {
 
     res.locals.search = req.query.search;
   }
+
   const totalPosts = await Post.count(options);
   const allCategories = await Categories.find();
   const posts = await Post.find(options)
@@ -34,22 +37,34 @@ router.get("/", async (req, res) => {
     .skip(page * limit)
     .populate("category")
     .populate("author");
+
   res.render("index", {
     categories: allCategories,
     user: req.user ? req.user : {},
     posts,
     pages: Math.ceil(totalPosts / limit),
+    userId: userId,
   });
 });
 
 router.get("/profile/:id", async (req, res) => {
-  const user = await User.findById(req.params.id);
+  const userId = req.params.id;
+
+  const user = await User.findById(userId); // Use userId from req.params
   const posts = await Post.find().populate("category").populate("author");
+
+  let isOwnProfile = false;
+  if (req.user && req.user.id === userId) {
+    isOwnProfile = true;
+  }
+
   if (user) {
     res.render("myProfile", {
       user: user,
       loginUser: req.user,
       posts,
+      userId: userId,
+      isOwnProfile: isOwnProfile,
     });
   } else {
     res.redirect("/not-found");
@@ -57,6 +72,11 @@ router.get("/profile/:id", async (req, res) => {
 });
 
 router.get("/detail/:id", async (req, res) => {
+  const userId = req.params.id;
+  let isOwnProfile = false;
+  if (req.user && req.user.id === userId) {
+    isOwnProfile = true;
+  }
   const comments = await Comment.find({ postId: req.params.id }).populate(
     "authorId"
   );
@@ -71,6 +91,8 @@ router.get("/detail/:id", async (req, res) => {
     post: post,
     user: req.user ? req.user : {},
     comments: comments,
+    isOwnProfile: isOwnProfile,
+    userId: userId,
   });
 });
 
