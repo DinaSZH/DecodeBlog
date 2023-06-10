@@ -38,6 +38,7 @@ passport.use(
       scope: ["openid", "email", "profile"],
     },
     async function (accessToken, refreshToken, profile, done) {
+      const user = await User.find({ githubId: profile.id });
       const newUser = await new User({
         githubId: profile.id,
         full_name: profile.username,

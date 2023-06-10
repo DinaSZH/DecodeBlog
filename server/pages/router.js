@@ -7,7 +7,7 @@ const Comment = require("../Comment/Comments");
 
 router.get("/", async (req, res) => {
   const userId = req.params.id;
-
+  console.log("/", userId);
   const options = {};
   const categories = await Categories.findOne({ key: req.query.category });
   if (categories) {
@@ -37,19 +37,23 @@ router.get("/", async (req, res) => {
     .skip(page * limit)
     .populate("category")
     .populate("author");
-
+  const CurrentUser = req.user ? req.user.id : null;
   res.render("index", {
     categories: allCategories,
     user: req.user ? req.user : {},
     posts,
     pages: Math.ceil(totalPosts / limit),
-    userId: userId,
+    userId,
+    CurrentUser,
+    commentsLength: res.locals.commentsLength || 0,
   });
 });
 
 router.get("/profile/:id", async (req, res) => {
+  const CurrentUser = req.user ? req.user.id : null;
+  // console.log("Current" + CurrentUser);
   const userId = req.params.id;
-
+  console.log(userId);
   const user = await User.findById(userId); // Use userId from req.params
   const posts = await Post.find().populate("category").populate("author");
 
@@ -63,8 +67,9 @@ router.get("/profile/:id", async (req, res) => {
       user: user,
       loginUser: req.user,
       posts,
-      userId: userId,
+      userId,
       isOwnProfile: isOwnProfile,
+      CurrentUser,
     });
   } else {
     res.redirect("/not-found");
@@ -72,6 +77,7 @@ router.get("/profile/:id", async (req, res) => {
 });
 
 router.get("/detail/:id", async (req, res) => {
+  const CurrentUser = req.user ? req.user.id : null;
   const userId = req.params.id;
   let isOwnProfile = false;
   if (req.user && req.user.id === userId) {
@@ -80,6 +86,12 @@ router.get("/detail/:id", async (req, res) => {
   const comments = await Comment.find({ postId: req.params.id }).populate(
     "authorId"
   );
+  // Calculate the comments length
+  const commentsLength = comments.length;
+
+  // Store the comments length in res.locals to make it accessible globally
+  res.locals.commentsLength = commentsLength;
+
   console.log(comments);
   const post = await Post.findById(req.params.id)
     .populate("category")
@@ -93,6 +105,7 @@ router.get("/detail/:id", async (req, res) => {
     comments: comments,
     isOwnProfile: isOwnProfile,
     userId: userId,
+    CurrentUser,
   });
 });
 
@@ -115,7 +128,8 @@ router.get("/edit/:id", async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login", { user: req.user ? req.user : {} });
+  const CurrentUser = req.user ? req.user.id : null;
+  res.render("login", { user: req.user ? req.user : {}, CurrentUser });
 });
 
 router.get("/signUp", (req, res) => {

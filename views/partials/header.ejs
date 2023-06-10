@@ -11,8 +11,8 @@
   </form>
 
   <div class="header-button">
-    <% if(user._id) { %>
-    <a href="/profile/<%= user._id %>"
+    <% if(CurrentUser) { %>
+    <a href="/profile/<%= CurrentUser %>"
       ><img src="/images/avatar.png" alt="" style="width: 50px"
     /></a>
     <% } else { %>

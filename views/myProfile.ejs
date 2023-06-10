@@ -97,7 +97,7 @@
           285 постов за все время
         </p>
 
-        <% if(loginUser.id==user.id){ %>
+        <% if(locals.isOwnProfile){ %>
         <div class="edit-button"><a>Редактировать</a></div>
         <div class="edit-button"><a href="/api/signout">Выход</a></div>
         <% } %>

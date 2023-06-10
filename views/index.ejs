@@ -17,7 +17,8 @@
           </p>
         </div>
 
-        <% posts.forEach(item => { %>
+        <% posts.forEach(item => {
+          %>
 
         <div class="post">
           <a href="/detail/<%=item._id %>" class="detail-item">
@@ -43,7 +44,7 @@
 
             <div class="comments">
               <i class="fa-solid fa-message"></i>
-              <p>4</p>
+              <p><%= commentsLength %></p>
             </div>
 
             <div class="category">
